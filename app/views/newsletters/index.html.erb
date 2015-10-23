@@ -1,0 +1,27 @@
+<% provide(:title, 'Newsletter Archive') %>
+<h1>Newsletter Archive</h1>
+<%if current_user.admin?%>
+	<h2>
+			<%= link_to "Create Newsletter", new_newsletter_path%> <hr />
+	</h2>
+	
+	<div class="unpublished-newsletters">
+		<h2>Unpublished Newsletters</h2>
+		<% @unpublished_newsletters.each do |newsletter|%>
+			<%= render newsletter%>
+		<%end%>
+		
+		<h2>Unemailed Newsletters</h2>
+		<% @unemailed_newsletters.each do |newsletter|%>
+			<%= render newsletter%>
+		<%end%>
+		
+		<h2>Published Newsletters</h2>
+	</div>
+<%end%>
+
+<div class="published-newsletters">
+	<% @published_newsletters.each do |newsletter|%>
+		<%= render newsletter%>
+	<%end%>
+</div>

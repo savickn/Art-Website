@@ -1,0 +1,10 @@
+<h2>
+		<%= link_to newsletter.title, newsletter_path(newsletter)%>
+  
+  <%if current_user && current_user.admin?%>
+    <%= link_to 'Edit', edit_newsletter_path(newsletter)%>
+    <%= link_to 'Delete', newsletter, method: :delete, data: { confirm: 'Are you sure?' }%>
+	<%end%>
+</h2>
+
+<p>Posted: <%=distance_of_time_in_words_to_now newsletter.created_at%> ago</p> <hr />

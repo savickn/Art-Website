@@ -1,0 +1,35 @@
+<% provide(:title, @gallery.title) %>
+	
+	<h1><%= @gallery.title%></h1>
+	<h2>Price: $<%= @gallery.price%></h2>
+	<p><%= @gallery.description%></p>
+	
+	
+<div class="container">
+
+	<table class="posts">
+  <thead>
+    <tr>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+ 
+	<tbody>
+		<% @pictures.each_slice(4) do |row|%>
+			<tr>
+				<%row.each do |picture|%>
+					<td>
+						<%= link_to image_tag(picture.image.url(:med)), picture.image.url(:large), class: "fancybox", :rel => 'group' %> 
+						<br />
+						<% if current_user && current_user.admin?%>
+							<%= link_to 'Remove', picture, method: :delete, data: {confirm: "Are you sure?"}%>
+						<%end%>					
+					</td>
+				<%end%>	
+			</tr>
+		<%end%>
+	</tbody>
+</table>
+	
+	
+	

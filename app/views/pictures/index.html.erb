@@ -1,0 +1,14 @@
+<% provide(:title, 'Gallery') %>
+<h1>Gallery</h1>
+
+<% @pictures.each do |picture| %>
+	<%= link_to image_tag(picture.image.url(:med)), picture.image.url %>
+	<%= link_to 'Show', picture_path(picture)%>
+	<% if current_user.admin?%>
+		<%= link_to 'Edit', edit_picture_path(picture)%>
+	<%end%>
+<%end%> <br />
+
+
+
+

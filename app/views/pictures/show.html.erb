@@ -1,0 +1,7 @@
+<% provide(:title, @picture.gallery_id) %>
+<div class="row">
+
+	<%= link_to image_tag(@picture.image.url(:large)), @picture.image.url %> <br>
+
+</div>
+

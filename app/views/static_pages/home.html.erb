@@ -1,0 +1,25 @@
+<div class="center jumbotron">
+  <div>
+	  <h1>Welcome to the Art Exhibit</h1>
+	  <%= link_to "View Gallery", galleries_path, class: "btn btn-lg btn-primary" %>
+  </div>
+  
+  <h2><strong>Newest Galleries </strong> </h2>
+  <div class="container">
+  	<% @galleries.each_slice(2) do |row| %>
+	  	<div class="rows">
+	  		<div class="two columns">
+	  			<%row.each do |gallery|%>
+	  				<% @pictures.each do |picture|%>
+						<%if picture.gallery_id == gallery.id && picture.default_image == true%>
+							<%= link_to image_tag(picture.image.url(:med)), gallery_path(picture.gallery_id)%>
+						<%end%>
+					<%end%>
+	  			<%end%>	
+	  		</div>
+	  	</div>
+    <%end%>
+  </div>
+</div>
+
+

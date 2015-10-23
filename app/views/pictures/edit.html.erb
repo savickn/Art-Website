@@ -1,0 +1,18 @@
+<% provide(:title, 'Edit Picture') %>
+<h1>Edit Picture</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @picture, html: {multipart: true} do |f| %>
+      
+      <%= f.label :image %>
+      <%= f.file_field :image, class: 'form-control' %>
+      
+      <%= f.label :default_image, 'Set as default image?'%>
+      <%= f.check_box :default_image, class: 'form-control' %>
+      <br />
+
+      <%= f.submit "Update Picture", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

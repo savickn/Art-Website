@@ -1,0 +1,20 @@
+<% provide(:title, 'Create Newsletter') %>
+<h1>Create Newsletter</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @newsletter do |f| %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+
+      <%= f.label :content %>
+      <%= f.text_field :content, class: 'form-control' %>
+      
+      <%= f.label :published, 'Publish this newsletter?'%>
+      <%= f.check_box :published, class: 'form-control' %>
+      
+      <%= f.submit "Create Newsletter", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

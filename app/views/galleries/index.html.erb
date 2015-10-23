@@ -1,0 +1,34 @@
+<% provide(:title, 'Galleries') %>
+<h1>Galleries</h1>
+<% if current_user && current_user.admin?%>
+	<h2> <%= link_to "Add Painting", new_gallery_path %> </h2>
+<%end%>
+
+<div class="container">
+	<% @galleries.each_slice(3) do |row| %>
+		<div class="row">
+		    <%row.each do |gallery|%>
+		    	<div class="col-md-4">
+					<span class="defaultpicture">
+						<% @pictures.each do |picture|%>
+							<%if picture.gallery_id == gallery.id && picture.default_image == true%>
+								<%= image_tag picture.image.url(:med)%>
+							<%end%>
+						<%end%>
+						
+						<span class="gallerytext">
+							<%= link_to gallery.title, gallery_path(gallery)%>
+						
+						
+							<% if current_user && current_user.admin?%>
+								<%= link_to 'Edit', edit_gallery_path(gallery)%>
+								<%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' }%>
+							<%end%>
+						</span>
+					</span>
+				</div>
+		    <%end%>
+		</div>
+	<%end%>
+</div>
+

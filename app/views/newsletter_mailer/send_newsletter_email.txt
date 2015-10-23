@@ -1,0 +1,6 @@
+<%= @newsletter.title%>
+===============================================
+ 
+<%= @newsletter.content%>
+ 
+To view past newsletter follow this link: <%= @url %>
